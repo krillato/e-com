@@ -1,117 +1,233 @@
 "use client";
-import { appSelector } from "@/store/slices/appSlice";
-import { useAppDispatch } from "@/store/store";
+
 import { useSelector } from "react-redux";
-import { decrement, increment } from "@/store/slices/appSlice";
+import { useAppDispatch } from "@/store/store";
+import { decrement, increment, appSelector } from "@/store/slices/appSlice";
 import Image from "next/image";
-import { store } from "@/store/store";
+import React, { useEffect, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+import ProductSlider from "@/components/ProductsSlice/View";
+
+const CounterButtons: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  return (
+    <div className="flex gap-2 mt-4">
+      <button onClick={() => dispatch(decrement())} className="btn">
+        Decrement
+      </button>
+      <button onClick={() => dispatch(increment())} className="btn">
+        Increment
+      </button>
+    </div>
+  );
+};
+
 export default function Home() {
   const appReducer = useSelector(appSelector);
-  const dispatch = useAppDispatch();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div>Count : {store.getState().appReducer.counter}</div>
-      <div>
-        counter from Counter component : {appReducer.counter}
-        <div>
-          <button onClick={() => dispatch(decrement())}>Decrement</button>
-          ||
-          <button onClick={() => dispatch(increment())}>Increment</button>
+    <div className="px-[144px] flex flex-col">
+      {/* Header */}
+      <div className="  py-5 h-24 items-center flex justify-between ">
+        <div>Exclusive</div>
+        <div className=" flex gap-[48px]">
+          <div>Home</div>
+          <div>Contact</div>
+          <div>About</div>
+          <div>Sign Up</div>
+        </div>
+        <div className="flex items-center justify-center gap-4">
+          <div className="flex gap-2">
+            <input
+              className="outline-none border-none"
+              type="text"
+              placeholder="What are you looking for?"
+            />
+            <Image
+              src="/images/icons/icon_search.svg"
+              alt="Example Image"
+              width={16}
+              height={16}
+            />{" "}
+          </div>
+          <Image
+            src="/images/icons/icon_like.svg"
+            alt="Example Image"
+            width={20}
+            height={18}
+          />{" "}
+          <Image
+            src="/images/icons/icon_shop.svg"
+            alt="Example Image"
+            width={32}
+            height={32}
+          />
         </div>
       </div>
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Menu + label */}
+      <div className="overflow-x-auto scroll-none flex flex-col gap-11 lg:flex-row w-full">
+        <div className=" w-[300px] border-r-[1px]  h-[300px] overflow-auto">
+          <ul className="gap-6 flex flex-col">
+            <li className="flex gap-10 ">
+              Woman’s Fashion{" "}
+              <Image
+                src="/images/icons/icon_expans.svg"
+                alt="Example Image"
+                width={8}
+                height={13}
+              />{" "}
+            </li>
+            <li className="flex gap-10 ">
+              Men’s Fashion{" "}
+              <Image
+                src="/images/icons/icon_expans.svg"
+                alt="Example Image"
+                width={8}
+                height={13}
+              />{" "}
+            </li>
+            <li className="flex gap-10 ">Electronics</li>
+            <li className="flex gap-10 ">Home & Lifestyle</li>
+            <li className="flex gap-10 ">Medicine</li>
+            <li className="flex gap-10 ">Sports & Outdoor</li>
+            <li className="flex gap-10 ">Baby’s & Toys</li>
+            <li className="flex gap-10 ">Groceries & Pets</li>
+            <li className="flex gap-10 ">Health & Beauty</li>
+          </ul>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="max-w-[900px]  h-[300px]">
+          {" "}
+          {/* Adjust container size as needed */}
+          <Swiper
+            modules={[EffectFade, Autoplay, Pagination]}
+            effect="fade"
+            autoplay={{
+              delay: 3000, // 3 seconds delay
+              disableOnInteraction: false, // Continue autoplay after interaction
+            }}
+            loop={true} // Enables looping
+            pagination={{
+              clickable: true, // Enable clicking on dots to navigate
+            }}
+            className="h-full"
+          >
+            {[1, 2, 3].map((el) => (
+              <SwiperSlide
+                key={el}
+                className="flex items-center justify-center bg-gray-200"
+              >
+                <Image
+                  src={`/images/slice/1.svg`}
+                  alt={`/images/slice/${el}`}
+                  width={150}
+                  height={150}
+                  className="w-full h-full object-cover rounded-md"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+      {/* flash sales */}
+      <div className="mt-[120px] w-full">
+        <div className="flex items-center gap-4">
+          <div className="bg-[#DB4444] rounded-sm w-[20px] h-[40px]"></div>
+          <h2 className="font-semibold text-[#DB4444]">Today’s</h2>
+        </div>
+        <div className="flex justify-between">
+          <div className="flex gap-20">
+            <h1 className="text-[36px] font-semibold">Flash Sales</h1>
+            <div className="flex items-center justify-center bg-gray-50">
+              <CountdownTimer targetDate="2025-01-10T00:00:00" />
+            </div>
+          </div>
+
+          <div className="flex gap-8">
+            <div className="bg-[#F5F5F5] w-[46px] h-[46px] rounded-full p-2 items-center flex justify-center">
+              {"<"}
+            </div>
+            <div className="bg-[#F5F5F5] w-[46px] h-[46px] rounded-full p-2 items-center flex justify-center">
+              {">"}
+            </div>
+          </div>
+        </div>{" "}
+        <ProductSlider />
+      </div>
     </div>
   );
 }
+
+interface FooterLinkProps {
+  href: string;
+  icon: string;
+  text: string;
+}
+
+const FooterLink: React.FC<FooterLinkProps> = ({ href, icon, text }) => (
+  <a
+    className="flex items-center gap-2 hover:underline"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Image src={icon} alt={`${text} icon`} width={16} height={16} />
+    {text}
+  </a>
+);
+
+const CountdownTimer: React.FC<{ targetDate: string }> = ({ targetDate }) => {
+  const calculateTimeLeft = () => {
+    const difference = +new Date(targetDate) - +new Date();
+    let timeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  return (
+    <div className="flex items-center justify-center gap-6 text-center">
+      {Object.entries(timeLeft).map(([unit, value]) => (
+        <div key={unit}>
+          <p className="text-sm font-medium text-gray-500">
+            {unit.charAt(0).toUpperCase() + unit.slice(1)}
+          </p>
+          <div className="flex items-center text-4xl font-bold text-black">
+            <span>{String(value).padStart(2, "0")}</span>
+            {unit !== "seconds" && <span className="text-red-500 mx-2">:</span>}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
