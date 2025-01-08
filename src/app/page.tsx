@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/store/store";
 import { decrement, increment, appSelector } from "@/store/slices/appSlice";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,6 +14,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import ProductSlider from "@/components/ProductsSlice/View";
+import ViewTitleText from "@/components/Label/TittleText/View";
 
 const CounterButtons: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -32,9 +33,21 @@ const CounterButtons: React.FC = () => {
 
 export default function Home() {
   const appReducer = useSelector(appSelector);
+  const sliderRef = useRef<HTMLDivElement>(null!);
 
+  const scrollLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    }
+  };
   return (
-    <div className="px-[144px] flex flex-col">
+    <div className="px-6 lg:px-[144px] w-auto flex flex-col ">
       {/* Header */}
       <div className="  py-5 h-24 items-center flex justify-between ">
         <div>Exclusive</div>
@@ -73,8 +86,8 @@ export default function Home() {
         </div>
       </div>
       {/* Menu + label */}
-      <div className="overflow-x-auto scroll-none flex flex-col gap-11 lg:flex-row w-full">
-        <div className=" w-[300px] border-r-[1px]  h-[300px] overflow-auto">
+      <div className="  flex  gap-11  w-auto">
+        <div className="w-1/4 border-r-[1px]  h-[300px] overflow-auto">
           <ul className="gap-6 flex flex-col">
             <li className="flex gap-10 ">
               Woman’s Fashion{" "}
@@ -103,7 +116,7 @@ export default function Home() {
             <li className="flex gap-10 ">Health & Beauty</li>
           </ul>
         </div>
-        <div className="max-w-[900px]  h-[300px]">
+        <div className=" w-3/4  h-[300px]">
           {" "}
           {/* Adjust container size as needed */}
           <Swiper
@@ -138,10 +151,7 @@ export default function Home() {
       </div>
       {/* flash sales */}
       <div className="mt-[120px] w-full">
-        <div className="flex items-center gap-4">
-          <div className="bg-[#DB4444] rounded-sm w-[20px] h-[40px]"></div>
-          <h2 className="font-semibold text-[#DB4444]">Today’s</h2>
-        </div>
+        <ViewTitleText Title="Today’s" />
         <div className="flex justify-between">
           <div className="flex gap-20">
             <h1 className="text-[36px] font-semibold">Flash Sales</h1>
@@ -151,16 +161,59 @@ export default function Home() {
           </div>
 
           <div className="flex gap-8">
-            <div className="bg-[#F5F5F5] w-[46px] h-[46px] rounded-full p-2 items-center flex justify-center">
+            <div
+              onClick={scrollLeft}
+              className="bg-[#F5F5F5] w-[46px] cursor-pointer h-[46px] rounded-full p-2 items-center flex justify-center"
+            >
               {"<"}
             </div>
-            <div className="bg-[#F5F5F5] w-[46px] h-[46px] rounded-full p-2 items-center flex justify-center">
+            <div
+              onClick={scrollRight}
+              className="bg-[#F5F5F5] w-[46px] h-[46px] cursor-pointer rounded-full p-2 items-center flex justify-center"
+            >
               {">"}
             </div>
           </div>
         </div>{" "}
-        <ProductSlider />
+        <ProductSlider
+          scrollLeft={scrollLeft}
+          scrollRight={scrollRight}
+          sliderRef={sliderRef}
+        />
       </div>
+      {/* Categories */}
+      <div className="mt-[120px] w-full">
+        <ViewTitleText Title="Categories" />
+        <div className="flex justify-between">
+          <div className="flex gap-20">
+            <h1 className="text-[36px] font-semibold">Browse By Category</h1>
+          </div>
+
+          <div className="flex gap-8">
+            <div
+              onClick={scrollLeft}
+              className="bg-[#F5F5F5] w-[46px] cursor-pointer h-[46px] rounded-full p-2 items-center flex justify-center"
+            >
+              {"<"}
+            </div>
+            <div
+              onClick={scrollRight}
+              className="bg-[#F5F5F5] w-[46px] h-[46px] cursor-pointer rounded-full p-2 items-center flex justify-center"
+            >
+              {">"}
+            </div>
+          </div>
+        </div>{" "}
+        <ProductSlider
+          scrollLeft={scrollLeft}
+          scrollRight={scrollRight}
+          sliderRef={sliderRef}
+        />
+      </div>
+      {/* Best Selling Products */}
+      {/* Our Products */}
+      {/* New Arrival */}
+      {/* Footer */}
     </div>
   );
 }

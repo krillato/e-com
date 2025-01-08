@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React from "react";
 
 const products = [
   {
@@ -66,8 +66,16 @@ const products = [
   // Add more products as needed
 ];
 
-export default function ProductSlider() {
-  const sliderRef = useRef<HTMLDivElement>(null);
+export default function ProductSlider({
+  scrollLeft,
+  scrollRight,
+  sliderRef,
+}: {
+  scrollLeft: () => void;
+  scrollRight: () => void;
+  sliderRef: React.RefObject<HTMLDivElement>;
+}) {
+  /*   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
     if (sliderRef.current) {
@@ -79,7 +87,7 @@ export default function ProductSlider() {
     if (sliderRef.current) {
       sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
-  };
+  }; */
 
   return (
     <div className="relative  w-full">
