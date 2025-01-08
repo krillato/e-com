@@ -2,99 +2,34 @@
 import Image from "next/image";
 import React from "react";
 
-const products = [
-  {
-    id: 1,
-    name: "HAVIT HV-G92 Gamepad",
-    price: "$120",
-    oldPrice: "$160",
-    discount: "-40%",
-    rating: 4.5,
-    reviews: 88,
-    image: "/images/product/3.png",
-  },
-  {
-    id: 2,
-    name: "AK-900 Wired Keyboard",
-    price: "$960",
-    oldPrice: "$1160",
-    discount: "-35%",
-    rating: 4,
-    reviews: 75,
-    image: "/images/product/1.png",
-  },
-  {
-    id: 3,
-    name: "IPS LCD Gaming Monitor",
-    price: "$370",
-    oldPrice: "$400",
-    discount: "-30%",
-    rating: 4.5,
-    reviews: 99,
-    image: "/images/product/2.png",
-  },
-  {
-    id: 4,
-    name: "S-Series Comfort Chair",
-    price: "$375",
-    oldPrice: "$400",
-    discount: "-25%",
-    rating: 4.5,
-    reviews: 99,
-    image: "/images/product/4.png",
-  },
-  {
-    id: 5,
-    name: "S-Series Comfort Chair",
-    price: "$375",
-    oldPrice: "$400",
-    discount: "-25%",
-    rating: 4.5,
-    reviews: 99,
-    image: "/images/product/4.png",
-  },
-  {
-    id: 6,
-    name: "S-Series Comfort Chair",
-    price: "$375",
-    oldPrice: "$400",
-    discount: "-25%",
-    rating: 4.5,
-    reviews: 99,
-    image: "/images/product/4.png",
-  },
-  // Add more products as needed
-];
-
-export default function ProductSlider({
-  scrollLeft,
-  scrollRight,
-  sliderRef,
-}: {
+interface IProductSlider {
+  dataList: {
+    id: number;
+    name: string;
+    price: string;
+    oldPrice: string;
+    discount: string;
+    rating: number;
+    reviews: number;
+    image: string;
+  }[];
   scrollLeft: () => void;
   scrollRight: () => void;
   sliderRef: React.RefObject<HTMLDivElement>;
-}) {
-  /*   const sliderRef = useRef<HTMLDivElement>(null);
+}
 
-  const scrollLeft = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
-    }
-  }; */
-
+export default function ProductSlider({
+  dataList,
+  scrollLeft,
+  scrollRight,
+  sliderRef,
+}: IProductSlider) {
   return (
     <div className="relative  w-full">
       {/* Left Button */}
       <button
         onClick={scrollLeft}
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-red-500 text-white p-2 rounded-full shadow-md hover:bg-red-600"
+        className="absolute w-[50px] h-[50px] top-1/2 left-0 transform -translate-y-1/2 bg-red-500 text-white p-2 rounded-full shadow-md hover:bg-red-600"
       >
         &lt;
       </button>
@@ -104,7 +39,7 @@ export default function ProductSlider({
         ref={sliderRef}
         className="flex gap-4 overflow-x-auto scrollbar-hide py-4"
       >
-        {products.map((product) => (
+        {dataList?.map((product) => (
           <div
             key={product.id}
             className="min-w-[300px] border rounded-lg shadow-md bg-white p-4"
@@ -120,7 +55,7 @@ export default function ProductSlider({
                 alt={product.name}
                 width={150}
                 height={150}
-                className="w-full h-40 hover:object-cover rounded-md"
+                className="w-full h-40  rounded-md"
               />
             </div>
 
@@ -148,7 +83,7 @@ export default function ProductSlider({
       {/* Right Button */}
       <button
         onClick={scrollRight}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-red-500 text-white p-2 rounded-full shadow-md hover:bg-red-600"
+        className="absolute  w-[50px] h-[50px] top-1/2 right-0 transform -translate-y-1/2 bg-red-500 text-white p-2 rounded-full shadow-md hover:bg-red-600"
       >
         &gt;
       </button>

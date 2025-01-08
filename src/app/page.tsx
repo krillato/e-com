@@ -15,6 +15,10 @@ import "swiper/css/pagination";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import ProductSlider from "@/components/ProductsSlice/View";
 import ViewTitleText from "@/components/Label/TittleText/View";
+import CategorySlider from "@/components/CategorySlice/View";
+import ProductHighlightView from "@/components/ProductHighlight/View";
+import ProductsTwoSlice from "@/components/ProductsTwoSlice/View";
+import CategoryView from "@/components/ProductsNewArrival/View";
 
 const CounterButtons: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +34,113 @@ const CounterButtons: React.FC = () => {
     </div>
   );
 };
+
+const products = [
+  {
+    id: 1,
+    name: "HAVIT HV-G92 Gamepad",
+    price: "$120",
+    oldPrice: "$160",
+    discount: "-40%",
+    rating: 4.5,
+    reviews: 88,
+    image: "/images/product/3.png",
+  },
+  {
+    id: 2,
+    name: "AK-900 Wired Keyboard",
+    price: "$960",
+    oldPrice: "$1160",
+    discount: "-35%",
+    rating: 4,
+    reviews: 75,
+    image: "/images/product/1.png",
+  },
+  {
+    id: 3,
+    name: "IPS LCD Gaming Monitor",
+    price: "$370",
+    oldPrice: "$400",
+    discount: "-30%",
+    rating: 4.5,
+    reviews: 99,
+    image: "/images/product/2.png",
+  },
+  {
+    id: 4,
+    name: "S-Series Comfort Chair",
+    price: "$375",
+    oldPrice: "$400",
+    discount: "-25%",
+    rating: 4.5,
+    reviews: 99,
+    image: "/images/product/4.png",
+  },
+  {
+    id: 5,
+    name: "S-Series Comfort Chair",
+    price: "$375",
+    oldPrice: "$400",
+    discount: "-25%",
+    rating: 4.5,
+    reviews: 99,
+    image: "/images/product/4.png",
+  },
+  {
+    id: 6,
+    name: "S-Series Comfort Chair",
+    price: "$375",
+    oldPrice: "$400",
+    discount: "-25%",
+    rating: 4.5,
+    reviews: 99,
+    image: "/images/product/4.png",
+  },
+  // Add more products as needed
+];
+
+const bestSeller = [
+  {
+    id: 1,
+    name: "The north coat",
+    price: "$260",
+    oldPrice: "$360",
+    rating: 4.5,
+    reviews: 65,
+    discount: "-30%",
+    image: "/images/product/5.svg",
+  },
+  {
+    id: 2,
+    name: "Gucci duffle bag",
+    price: "$960",
+    oldPrice: "$1160",
+    rating: 4.5,
+    reviews: 65,
+    discount: "-20%",
+    image: "/images/product/6.svg",
+  },
+  {
+    id: 3,
+    name: "RGB liquid CPU Cooler",
+    price: "$160",
+    oldPrice: "$170",
+    rating: 4.5,
+    reviews: 65,
+    discount: "-5%",
+    image: "/images/product/7.svg",
+  },
+  {
+    id: 4,
+    name: "Small BookShelf",
+    price: "$360",
+    oldPrice: "$400",
+    rating: 4.5,
+    reviews: 65,
+    discount: "-10%",
+    image: "/images/product/8.svg",
+  },
+];
 
 export default function Home() {
   const appReducer = useSelector(appSelector);
@@ -176,10 +287,14 @@ export default function Home() {
           </div>
         </div>{" "}
         <ProductSlider
+          dataList={products}
           scrollLeft={scrollLeft}
           scrollRight={scrollRight}
           sliderRef={sliderRef}
         />
+        <div className="m-auto mt-10 bg-[#DB4444] text-white rounded-md flex justify-center items-center text-center p-3 w-[234px] cursor-pointer h-[56px]">
+          <h3>View All Products</h3>
+        </div>
       </div>
       {/* Categories */}
       <div className="mt-[120px] w-full">
@@ -204,15 +319,65 @@ export default function Home() {
             </div>
           </div>
         </div>{" "}
-        <ProductSlider
+        <CategorySlider
           scrollLeft={scrollLeft}
           scrollRight={scrollRight}
           sliderRef={sliderRef}
         />
       </div>
       {/* Best Selling Products */}
+      <div className="mt-[120px] mb-[120px] w-full">
+        <ViewTitleText Title="This Month" />
+        <div className="flex justify-between">
+          <div className="flex gap-20">
+            <h1 className="text-[36px] font-semibold">Best Selling Products</h1>
+          </div>
+
+          <div className="flex gap-8">
+            <div
+              onClick={scrollLeft}
+              className="bg-[#F5F5F5] w-[46px] cursor-pointer h-[46px] rounded-full p-2 items-center flex justify-center"
+            >
+              {"<"}
+            </div>
+            <div
+              onClick={scrollRight}
+              className="bg-[#F5F5F5] w-[46px] h-[46px] cursor-pointer rounded-full p-2 items-center flex justify-center"
+            >
+              {">"}
+            </div>
+          </div>
+        </div>{" "}
+        <ProductSlider
+          dataList={bestSeller}
+          scrollLeft={scrollLeft}
+          scrollRight={scrollRight}
+          sliderRef={sliderRef}
+        />
+      </div>
+      {/* Highlight */}
+
+      <ProductHighlightView />
       {/* Our Products */}
+      <div className="mt-[120px] w-full">
+        <ViewTitleText Title="Our Products" />
+        <div className="flex justify-between">
+          <div className="flex gap-20">
+            <h1 className="text-[36px] font-semibold">Explore Our Products</h1>
+          </div>
+        </div>{" "}
+        <ProductsTwoSlice />
+      </div>
       {/* New Arrival */}
+      <div className="mt-[120px] w-full">
+        <ViewTitleText Title="Featured" />
+        <div className="flex justify-between">
+          <div className="flex gap-20">
+            <h1 className="text-[36px] font-semibold">New Arrival</h1>
+          </div>
+        </div>{" "}
+        <CategoryView />
+      </div>
       {/* Footer */}
     </div>
   );
