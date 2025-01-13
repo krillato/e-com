@@ -2,8 +2,13 @@
 import { serviceGetDetail } from "@/services/Content";
 import { useEffect, useState } from "react";
 
+// Define the type for each item in the data array
+interface DataItem {
+  content: string;
+}
+
 const RedisPage = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<DataItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
@@ -19,6 +24,7 @@ const RedisPage = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) return <p>Loading...</p>;

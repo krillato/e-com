@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const CountdownTimer: React.FC<{ targetDate: string }> = ({ targetDate }) => {
@@ -31,6 +32,7 @@ const CountdownTimer: React.FC<{ targetDate: string }> = ({ targetDate }) => {
     }, 1000);
 
     return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetDate]);
 
   return (
@@ -73,14 +75,17 @@ const ProductHighlightView: React.FC = () => {
         {/* Right Section */}
         <div className="lg:w-1/2 flex w-full  min-h-[400px] items-center justify-center relative">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-tr bg-gradient-to-tl from-transparent w-full h-auto bg-[#ffffffa2] to-black opacity-80 rounded-full"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent w-full h-auto bg-[#ffffffa2] to-black opacity-80 rounded-full"></div>
 
           {/* Image */}
           <div className="lg:w-1/2 h-full  flex justify-center relative">
-            <img
-              src="/images/product/highlight.png" // Replace with actual JBL image
+            <Image
+              src="/images/product/highlight.png" // Replace with actual image path
               alt="JBL Speaker"
-              className="relative z-10 h-[200px] w-[300px]   transform transition-transform duration-500 hover:scale-110 "
+              layout="responsive"
+              width={300} // Base width
+              height={200} // Base height
+              className="relative z-10 transform transition-transform duration-500 hover:scale-110"
             />
           </div>
         </div>

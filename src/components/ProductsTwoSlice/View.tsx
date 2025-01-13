@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 
 const products = [
@@ -102,11 +103,14 @@ const ProductsHorizontalScroll = () => {
             {/* Badge */}
 
             {/* Product Image */}
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-32 h-32 object-contain mb-4"
-            />
+            <div className="relative w-32 h-32 mb-4">
+              <Image
+                src={product.image}
+                alt={product.name}
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
             {/* Product Name */}
             <h3 className="text-sm font-medium mb-2">{product.name}</h3>
             {/* Product Price */}

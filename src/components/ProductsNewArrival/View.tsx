@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const categories = [
@@ -41,10 +42,12 @@ const CategoryView = () => {
       {/* Left Side (Large Card) */}
       <div className="relative  col-span-1 md:col-span-1">
         <div className="relative h-full w-full overflow-hidden rounded-lg">
-          <img
+          <Image
             src={categories[0].image}
             alt={categories[0].title}
-            className="object-cover w-full h-full"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
           />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 text-white">
             <h2 className="text-2xl font-bold mb-2">{categories[0].title}</h2>
@@ -60,10 +63,12 @@ const CategoryView = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {/* First Card (Expands Full Width) */}
         <div className="relative h-96 overflow-hidden rounded-lg sm:col-span-2">
-          <img
+          <Image
             src={categories[1].image}
             alt={categories[1].title}
-            className="object-cover w-full h-full"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
           />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 text-white">
             <h3 className="text-2xl font-bold">{categories[1].title}</h3>
@@ -80,10 +85,12 @@ const CategoryView = () => {
             key={category.id}
             className="relative h-48 overflow-hidden rounded-lg"
           >
-            <img
+            <Image
               src={category.image}
               alt={category.title}
-              className="object-cover w-full h-full"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 text-white">
               <h3 className="text-lg font-bold">{category.title}</h3>
