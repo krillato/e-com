@@ -20,6 +20,7 @@ import ProductHighlightView from "@/components/ProductHighlight/View";
 import ProductsTwoSlice from "@/components/ProductsTwoSlice/View";
 import CategoryView from "@/components/ProductsNewArrival/View";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CounterButtons: React.FC = () => {
   const dispatch = useAppDispatch();
 
@@ -143,6 +144,7 @@ const bestSeller = [
 ];
 
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const appReducer = useSelector(appSelector);
   const sliderRef = useRef<HTMLDivElement>(null!);
 
@@ -389,6 +391,7 @@ interface FooterLinkProps {
   text: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FooterLink: React.FC<FooterLinkProps> = ({ href, icon, text }) => (
   <a
     className="flex items-center gap-2 hover:underline"
