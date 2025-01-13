@@ -1098,6 +1098,13 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
+"@neondatabase/serverless@^0.10.4":
+  version "0.10.4"
+  resolved "https://registry.npmjs.org/@neondatabase/serverless/-/serverless-0.10.4.tgz"
+  integrity sha512-2nZuh3VUO9voBauuh+IGYRhGU/MskWHt1IuZvHcJw6GLjDgtqj/KViKo7SIrLdGLdot7vFbiRRw+BgEy3wT9HA==
+  dependencies:
+    "@types/pg" "8.11.6"
+
 "@next/env@15.1.3":
   version "15.1.3"
   resolved "https://registry.npmjs.org/@next/env/-/env-15.1.3.tgz"
@@ -1661,6 +1668,15 @@
   version "4.0.2"
   resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.2.tgz"
   integrity sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==
+
+"@types/pg@8.11.6":
+  version "8.11.6"
+  resolved "https://registry.npmjs.org/@types/pg/-/pg-8.11.6.tgz"
+  integrity sha512-/2WmmBXHLsfRqzfHW7BNZ8SbYzE8OSk7i3WjFYvfgRHj7S1xj+16Je5fUKv3lVdVzk/zn9TXOqf+avFCFIE0yQ==
+  dependencies:
+    "@types/node" "*"
+    pg-protocol "*"
+    pg-types "^4.0.1"
 
 "@types/react-dom@^19":
   version "19.0.2"
@@ -3060,6 +3076,11 @@ dot-case@^3.0.4:
   dependencies:
     no-case "^3.0.4"
     tslib "^2.0.3"
+
+dotenv@^16.4.7:
+  version "16.4.7"
+  resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz"
+  integrity sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==
 
 dunder-proto@^1.0.0, dunder-proto@^1.0.1:
   version "1.0.1"
@@ -4992,6 +5013,11 @@ objectorarray@^1.0.5:
   resolved "https://registry.npmjs.org/objectorarray/-/objectorarray-1.0.5.tgz"
   integrity sha512-eJJDYkhJFFbBBAxeh8xW+weHlkI28n2ZdQV/J/DNfWfSKlGEf2xcfAbZTv3riEXHAhL9SVOTs2pRmXiSTf78xg==
 
+obuf@~1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/obuf/-/obuf-1.1.2.tgz"
+  integrity sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==
+
 once@^1.3.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/once/-/once-1.4.0.tgz"
@@ -5205,6 +5231,34 @@ pbkdf2@^3.1.2:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+pg-int8@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/pg-int8/-/pg-int8-1.0.1.tgz"
+  integrity sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==
+
+pg-numeric@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/pg-numeric/-/pg-numeric-1.0.2.tgz"
+  integrity sha512-BM/Thnrw5jm2kKLE5uJkXqqExRUY/toLHda65XgFTBTFYZyopbKjBe29Ii3RbkvlsMoFwD+tHeGaCjjv0gHlyw==
+
+pg-protocol@*:
+  version "1.7.0"
+  resolved "https://registry.npmjs.org/pg-protocol/-/pg-protocol-1.7.0.tgz"
+  integrity sha512-hTK/mE36i8fDDhgDFjy6xNOG+LCorxLG3WO17tku+ij6sVHXh1jQUJ8hYAnRhNla4QVD2H8er/FOjc/+EgC6yQ==
+
+pg-types@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/pg-types/-/pg-types-4.0.2.tgz"
+  integrity sha512-cRL3JpS3lKMGsKaWndugWQoLOCoP+Cic8oseVcbr0qhPzYD5DWXK+RZ9LY9wxRf7RQia4SCwQlXk0q6FCPrVng==
+  dependencies:
+    pg-int8 "1.0.1"
+    pg-numeric "1.0.2"
+    postgres-array "~3.0.1"
+    postgres-bytea "~3.0.0"
+    postgres-date "~2.1.0"
+    postgres-interval "^3.0.0"
+    postgres-range "^1.1.1"
+
 picocolors@^1.0.0, picocolors@^1.1.0, picocolors@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz"
@@ -5364,6 +5418,33 @@ postcss@8.4.31:
     nanoid "^3.3.6"
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
+
+postgres-array@~3.0.1:
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/postgres-array/-/postgres-array-3.0.2.tgz"
+  integrity sha512-6faShkdFugNQCLwucjPcY5ARoW1SlbnrZjmGl0IrrqewpvxvhSLHimCVzqeuULCbG0fQv7Dtk1yDbG3xv7Veog==
+
+postgres-bytea@~3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/postgres-bytea/-/postgres-bytea-3.0.0.tgz"
+  integrity sha512-CNd4jim9RFPkObHSjVHlVrxoVQXz7quwNFpz7RY1okNNme49+sVyiTvTRobiLV548Hx/hb1BG+iE7h9493WzFw==
+  dependencies:
+    obuf "~1.1.2"
+
+postgres-date@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/postgres-date/-/postgres-date-2.1.0.tgz"
+  integrity sha512-K7Juri8gtgXVcDfZttFKVmhglp7epKb1K4pgrkLxehjqkrgPhfG6OO8LHLkfaqkbpjNRnra018XwAr1yQFWGcA==
+
+postgres-interval@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/postgres-interval/-/postgres-interval-3.0.0.tgz"
+  integrity sha512-BSNDnbyZCXSxgA+1f5UU2GmwhoI0aU5yMxRGO8CdFEcY2BQF9xm/7MqKnYoM1nJDk8nONNWDk9WeSmePFhQdlw==
+
+postgres-range@^1.1.1:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/postgres-range/-/postgres-range-1.1.4.tgz"
+  integrity sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
